@@ -13,10 +13,6 @@ cstdio
 -
 iostream
 -
-cstdio
--
-iostream
--
 
 include/leveldb/db.h
 stdint.h

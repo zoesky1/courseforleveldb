@@ -18,9 +18,16 @@ int main() {
 
     db->Put(WriteOptions(), "002", "world");
     string s1;
-    db->Delete(WriteOptions(), "002");
+   // db->Delete(WriteOptions(), "002");
     db->Get(ReadOptions(), "002", &s1);
     cout<<s1<<endl;
+
+    leveldb::Iterator *iter=db->NewIterator(leveldb::ReadOptions());
+    for(iter->SeekToFirst();iter->Valid();iter->Next())
+    {
+        std::cout<<iter->key().ToString()<<":"<<iter->value().ToString()<<std::endl;
+    }
+    delete iter;
 
     delete db;
     return 0;
