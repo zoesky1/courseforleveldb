@@ -11,7 +11,7 @@ int main() {
     op.create_if_missing = true;
     Status status = DB::Open(op, "testdb", &db);
     assert(status.ok());
-    db->Put(WriteOptions(), "001", "not world");
+    db->Put(WriteOptions(), "001", "leveldb");
     string s;
     db->Get(ReadOptions(), "001", &s);
     cout<<s<<endl;
